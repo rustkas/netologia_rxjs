@@ -1,0 +1,16 @@
+<input id="email" />
+<script>
+  function handleInput(email) {
+    console.log(email);
+  }
+
+  let timeoutId = null;
+  document.getElementById('email').addEventListener('input', (e) => {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    timeoutId = setTimeout(() => {
+      handleInput(e.target.value);
+    }, 500);
+  });
+</script>

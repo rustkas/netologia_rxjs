@@ -1,0 +1,20 @@
+<input id="email" />
+<script>
+  function handleInput(email) {
+    console.log(email);
+  }
+
+  const debounce = (fn, delay) => {
+    let timeoutId;
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    timeoutId = setTimeout(() => {
+      fn();
+    }, delay);
+  };
+
+  document.getElementById('email').addEventListener('input', (e) => {
+    debounce(() => handleInput(e.target.value), 500);
+  });
+</script>
