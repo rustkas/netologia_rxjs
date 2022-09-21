@@ -1,0 +1,57 @@
+<input id="email" />
+<script>
+
+class Subject {
+    
+    constructor() {
+      this.observers = [];
+    }
+
+    subscribe(observer) {
+      this.observers.push(observer);
+    }
+
+    next(v){
+      this.observers.forEach((observer) => observer(v));
+    }
+  }
+
+  function handleInput(email) {
+    console.log(email);
+  }
+
+  const debounce = (delay) => (fn) => {
+    let timeoutId;
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    timeoutId = setTimeout(() => {
+      fn();
+    }, delay);
+  };
+
+  const inputDebounce = debounce(500);
+
+  const fromEvent = (el, eventName) => {
+    const subject = new Subject();
+    el.addEventListener(eventName, (e) => {
+        const email = e.target.value;
+        inputStream.next(email);
+      });
+    return subject;
+  };
+
+  const from = (promise) => {
+    const subject = new Subject();
+    promise.then((v) => subject.next(v));
+    return subject;
+  };
+
+  const inputStream = fromEvent(document.getElementById('email'),'input');
+  from(fetch('https://jsonplaceholder.typicode.com/posts'))
+    .subscribe(
+      (email) => inputDebounce(() => handleInput(email))
+    );
+  
+  
+</script>

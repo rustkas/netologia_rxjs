@@ -1,0 +1,49 @@
+<input id="email" />
+<script>
+
+class Subject {
+    
+    constructor() {
+      this.observers = [];
+    }
+
+    subscribe(observer) {
+      this.observers.push(observer);
+    }
+
+    next(v){
+      this.observers.forEach((observer) => observer(v));
+    }
+  }
+
+  function handleInput(email) {
+    console.log(email);
+  }
+
+  const debounce = (delay) => (fn) => {
+    let timeoutId;
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    timeoutId = setTimeout(() => {
+      fn();
+    }, delay);
+  };
+
+  const inputStream = new Subject();
+  const inputDebounce = debounce(500);
+
+  document.getElementById('email')
+    .addEventListener('input', (e) => {
+      const email = e.target.value;
+      inputStream.next(email);
+  });
+
+  inputStream.subscribe(
+    (email) => inputDebounce(() => handleInput(email))
+  );
+  inputStream.subscribe(
+    (email) => console.log(`2. ${email}`)
+  );
+  
+</script>
