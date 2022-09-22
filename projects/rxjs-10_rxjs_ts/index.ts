@@ -3,20 +3,15 @@ import './style.css';
 import { Observable } from 'rxjs';
 
 const dataSource = (observer) => {
-  let condition = 1; // 1, 2
-  console.log('start stream');
-  if (condition === 1) {
-    console.log(observer);
-    observer.next(5);
-    // observer.complete();
-    observer.next('world');
-   observer.complete();
-  } else if (condition === 2) {
-    observer.next(5);
-    console.info(new Error('sad'));
-    observer.error(new Error('sad'));
-    observer.next(42);
-  }
+  observer.next(5);
+  observer.next('world');
+  fetch('https://jsonplaceholder.typicode.com/posts')
+    .then(r => r.json())
+    .then((data) => {
+      observer.next(data);
+      observer.complete();
+    })
+    .catch((err) => observer.error(err));
 };
 const stream$ = new Observable(dataSource);
 
