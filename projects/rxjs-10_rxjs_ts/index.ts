@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 const dataSource = (observer) => {
   observer.next(5);
   observer.next('world');
+  // fetch('https://jsonplaceholder.typicode.com/')
   fetch('https://jsonplaceholder.typicode.com/posts')
     .then(r => r.json())
     .then((data) => {
