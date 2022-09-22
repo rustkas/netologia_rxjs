@@ -1,0 +1,19 @@
+<script src="https://unpkg.com/rxjs@^7/dist/bundles/rxjs.umd.min.js"></script>
+<input id="email" />
+<script>
+  //import {Observable} from 'rxjs';
+  const dataSource = (observer) => {
+    let condition = 1;
+    if (condition === 1) {
+      observer.next(5);
+      observer.complite();  
+    } else if  (condition === 2) {
+      observer.next(5);  
+      observer.error(new Error('sad'));
+      observer.next(42);
+    }
+    
+  };
+  const stream = new rxjs.Observable(dataSource);
+  console.log(stream);
+</script>
