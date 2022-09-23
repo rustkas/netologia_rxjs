@@ -11,7 +11,7 @@ const fromEvent = (el, eventName) => {
   })
 };
 
-const stream = fromEvent(document.getElementById('email'), 'input');
+const stream$ = fromEvent(document.getElementById('email'), 'input');
 const logObserver = {
   next(v) {
     console.log(v);
@@ -25,5 +25,5 @@ const logObserver = {
 };
 
 console.log('start');
-const subscription = stream.subscribe(logObserver);
+const subscription = stream$.subscribe(logObserver);
 console.log('end');

@@ -36,13 +36,13 @@ class Subject {
     const subject = new Subject();
     el.addEventListener(eventName, (e) => {
         const email = e.target.value;
-        inputStream.next(email);
+        inputStream$.next(email);
       });
     return subject;
   };
 
-  const inputStream = fromEvent(document.getElementById('email'),'input');
-  inputStream
+  const inputStream$ = fromEvent(document.getElementById('email'),'input');
+  inputStream$
     .subscribe(
       (email) => inputDebounce(() => handleInput(email))
     );

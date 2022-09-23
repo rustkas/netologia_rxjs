@@ -15,7 +15,7 @@ const dataSource = (observer) => {
     observer.next(42);
   }
 };
-const stream = new Observable(dataSource);
+const stream$ = new Observable(dataSource);
 
 const logObserver = {
   next(v) {
@@ -29,4 +29,4 @@ const logObserver = {
   },
 };
 // console.log(logObserver);
-stream.subscribe(logObserver);
+stream$.subscribe(logObserver);

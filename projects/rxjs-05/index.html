@@ -32,12 +32,12 @@
 
   const inputDebounce = debounce(500);
   const fromEvent = (el, eventName) => {
-    const inputStream = new Subject();
+    const inputStream$ = new Subject();
     el.addEventListener(eventName, (e) => {
         const email = e.target.value;
-        inputStream.next(email);
+        inputStream$.next(email);
       });
-    return inputStream;
+    return inputStream$;
   };
 
   fromEvent(document.getElementById('email'),'input').subscribe(

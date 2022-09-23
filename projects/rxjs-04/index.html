@@ -30,19 +30,19 @@
     }, delay);
   };
 
-  const inputStream = new Subject();
+  const inputStream$ = new Subject();
   const inputDebounce = debounce(500);
 
   document.getElementById('email')
     .addEventListener('input', (e) => {
       const email = e.target.value;
-      inputStream.next(email);
+      inputStream$.next(email);
   });
 
-  inputStream.subscribe(
+  inputStream$.subscribe(
     (email) => inputDebounce(() => handleInput(email))
   );
-  inputStream.subscribe(
+  inputStream$.subscribe(
     (email) => console.log(`2. ${email}`)
   );
   
