@@ -1,4 +1,3 @@
-import './style.css';
 import { Observable } from 'rxjs';
 
 const fromEvent = (el, eventName) => {
