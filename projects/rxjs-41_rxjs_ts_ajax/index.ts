@@ -1,4 +1,3 @@
-import {} from 'rxjs';
 import {ajax} from 'rxjs/ajax';
 
 const logObserver = {
