@@ -1,4 +1,3 @@
-import './style.css';
 import { interval } from 'rxjs';
 
 const logObserver = {

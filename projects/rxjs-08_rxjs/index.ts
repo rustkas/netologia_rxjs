@@ -1,6 +1,4 @@
-import './style.css';
-
-import { of, map, Observable } from 'rxjs';
+import { of, map } from 'rxjs';
 
 of('World')
   .pipe(map((name) => `Hello, ${name}!`))

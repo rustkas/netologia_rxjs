@@ -1,4 +1,3 @@
-import './style.css';
 import { bindCallback } from 'rxjs';
 
 import * as jQuery from 'jquery';

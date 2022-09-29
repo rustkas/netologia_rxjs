@@ -1,4 +1,3 @@
-import './style.css';
 import { timer } from 'rxjs';
 
 const logObserver = {

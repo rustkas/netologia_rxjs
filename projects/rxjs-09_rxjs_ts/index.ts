@@ -1,5 +1,3 @@
-import './style.css';
-
 import { Observable } from 'rxjs';
 
 const dataSource = (observer) => {
